@@ -21,7 +21,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 
 console.log(environment);
 
-import { AppComponent } from './app.component';
+import { AppComponent } from './containers';
 import { reducers, effects, CustomSerializer } from './store';
 
 // routes
