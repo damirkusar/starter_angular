@@ -25,7 +25,7 @@ export class AuthService {
     });
   }
 
-  public parseIdToken(token: string): IUser {
+  public parseIdTokenToUser(token: string): IUser {
     const parsedIdToken: IIDToken = JwtDecoder(token);
 
     // const base64Url = token.split('.')[1];
