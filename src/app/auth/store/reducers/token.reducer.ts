@@ -42,7 +42,8 @@ export function reducer(
       return {
         ...state,
         loading: false,
-        loaded: false
+        loaded: false,
+        token: {}
       };
     }
   }
