@@ -6,9 +6,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "npm run karma",
-    "test:watch": "npm run karma:watch",
-    "test:ci": "npm run karma:ci",
+    "test": "npm run jest",
+    "test:watch": "npm run jest:watch",
+    "test:ci": "npm run jest:ci",
     "karma": "npm run karma:watch",
     "karma:watch": "ng test",
     "karma:ci": "ng test --single-run",
@@ -71,25 +71,15 @@
       "__TS_CONFIG__": "src/tsconfig.spec.json",
       "__TRANSFORM_HTML__": true
     },
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/src/jest*.ts"
-    ],
+    "coveragePathIgnorePatterns": ["/node_modules/", "<rootDir>/src/jest*.ts"],
     "transform": {
-      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
+      "^.+\\.(ts|js|html)$":
+        "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "html"
-    ],
+    "moduleFileExtensions": ["ts", "js", "html"],
     "moduleNameMapper": {},
-    "transformIgnorePatterns": [
-      "node_modules/(?!@ngrx)"
-    ],
-    "modulePathIgnorePatterns": [
-      "main.spec.ts"
-    ]
+    "transformIgnorePatterns": ["node_modules/(?!@ngrx)"],
+    "modulePathIgnorePatterns": ["main.spec.ts"]
   }
 }

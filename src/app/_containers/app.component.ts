@@ -1,5 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
-import { Router, NavigationEnd } from '@angular/router';
+import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { filter } from 'rxjs/operators';
 
 @Component({
@@ -15,9 +15,10 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     this.router.events
-      .pipe(filter(e => e instanceof NavigationEnd))
+      .pipe(filter(e => e instanceof NavigationStart))
       .subscribe(nav => {
         const previousUrl = this.router.url;
+        console.log('previousUrl', previousUrl);
       });
   }
 }

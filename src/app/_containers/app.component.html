@@ -1,0 +1,29 @@
+<div style="text-align:center">
+  <h1>
+    Welcome to {{ title }}!
+  </h1>
+</div>
+<ul>
+  <li>
+    <h2>
+      <a [routerLink]="['']">Home</a>
+    </h2>
+  </li>
+  <li>
+    <h2>
+      <a [routerLink]="['auth']">Auth</a>
+    </h2>
+  </li>
+  <li>
+    <h2>
+      <a [routerLink]="['auth/login']">Auth Login</a>
+    </h2>
+  </li>
+  <li>
+    <h2>
+      <a [routerLink]="['auth/logout']">Auth Logout</a>
+    </h2>
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

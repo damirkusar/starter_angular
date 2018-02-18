@@ -19,18 +19,17 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
   : [];
 
-console.log(environment);
+import { AppRoutingModule } from './app-routing.module';
+import { AppComponent } from './_containers';
+import { reducers, effects, CustomSerializer } from './_store';
 
-import { AppComponent } from './containers';
-import { reducers, effects, CustomSerializer } from './store';
-
-// routes
-export const ROUTES: Routes = [
-  // { path: '', pathMatch: 'full', redirectTo: 'products' },
-  // {
-  //   path: 'products',
-  //   loadChildren: '../products/products.module#ProductsModule',
-  // },
+const routes: Routes = [
+  { path: '', pathMatch: 'full', redirectTo: '' },
+  {
+    path: 'auth',
+    loadChildren: './auth/auth.module#AuthModule'
+  }
+  // { path: '**', redirectTo: '' }
 ];
 
 @NgModule({
@@ -38,7 +37,8 @@ export const ROUTES: Routes = [
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    RouterModule.forRoot(ROUTES),
+    AppRoutingModule,
+    // RouterModule.forRoot(routes),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
@@ -47,4 +47,8 @@ export const ROUTES: Routes = [
   providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule {
+  constructor() {
+    console.log(environment);
+  }
+}
