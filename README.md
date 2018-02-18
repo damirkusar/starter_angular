@@ -26,3 +26,17 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+# TODO
+
+* Translation
+* State management
+  -- Login
+  -- Logout
+  -- Store Current User
+  -- Get Current User
+  -- Store current user and token in localstore?
+* Interceptor
+  -- Environment
+  -- Token
+* UI Framework

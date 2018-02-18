@@ -34,7 +34,10 @@
     "@ngrx/store": "5.1.0",
     "@ngrx/store-devtools": "5.1.0",
     "core-js": "^2.5.3",
+    "install": "^0.10.4",
     "jest-html-reporter": "^1.2.0",
+    "jwt-decode": "^2.2.0",
+    "npm": "^5.6.0",
     "rxjs": "^5.5.6",
     "zone.js": "^0.8.20"
   },
@@ -71,15 +74,25 @@
       "__TS_CONFIG__": "src/tsconfig.spec.json",
       "__TRANSFORM_HTML__": true
     },
-    "coveragePathIgnorePatterns": ["/node_modules/", "<rootDir>/src/jest*.ts"],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "<rootDir>/src/jest*.ts"
+    ],
     "transform": {
-      "^.+\\.(ts|js|html)$":
-        "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
+      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": ["ts", "js", "html"],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "html"
+    ],
     "moduleNameMapper": {},
-    "transformIgnorePatterns": ["node_modules/(?!@ngrx)"],
-    "modulePathIgnorePatterns": ["main.spec.ts"]
+    "transformIgnorePatterns": [
+      "node_modules/(?!@ngrx)"
+    ],
+    "modulePathIgnorePatterns": [
+      "main.spec.ts"
+    ]
   }
 }

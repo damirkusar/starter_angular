@@ -22,15 +22,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './_containers';
 import { reducers, effects, CustomSerializer } from './_store';
-
-const routes: Routes = [
-  { path: '', pathMatch: 'full', redirectTo: '' },
-  {
-    path: 'auth',
-    loadChildren: './auth/auth.module#AuthModule'
-  }
-  // { path: '**', redirectTo: '' }
-];
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -38,7 +30,7 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    // RouterModule.forRoot(routes),
+    HttpClientModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
