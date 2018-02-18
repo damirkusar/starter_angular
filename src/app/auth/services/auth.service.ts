@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as JwtDecoder from 'jwt-decode';
-import { IToken, IUser, IIDToken } from '../models';
+import { Token, User, IdToken } from '../models';
 
 const authApi = '/api/auth/';
 
@@ -10,7 +10,7 @@ const authApi = '/api/auth/';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public login(userName: string, password: string): Observable<IToken> {
+  public login(userName: string, password: string): Observable<Token> {
     const grant_type = 'password';
     const scope = 'openid profile roles';
     const params = `grant_type=${grant_type}&scope=${scope}&username=${userName}&password=${password}`;
@@ -20,19 +20,19 @@ export class AuthService {
       'application/x-www-form-urlencoded'
     );
 
-    return this.http.post<IToken>(`${authApi}/token`, params, {
+    return this.http.post<Token>(`${authApi}/token`, params, {
       headers: headers
     });
   }
 
-  public parseIdTokenToUser(token: string): IUser {
-    const parsedIdToken: IIDToken = JwtDecoder(token);
+  public parseIdTokenToUser(token: string): User {
+    const parsedIdToken: IdToken = JwtDecoder(token);
 
     // const base64Url = token.split('.')[1];
     // const base64 = base64Url.replace('-', '+').replace('_', '/');
     // const parsedIdToken: IIDToken = JSON.parse(window.atob(base64));
 
-    const user: IUser = {
+    const user: User = {
       userId: parsedIdToken.sub,
       username: parsedIdToken.username,
       firstName: parsedIdToken.firstName,

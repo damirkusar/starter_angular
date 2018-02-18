@@ -1,4 +1,4 @@
-export interface IIDToken {
+export interface IdToken {
   sub: string;
   username: string;
   email: string;
