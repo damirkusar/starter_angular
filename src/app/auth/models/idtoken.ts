@@ -4,5 +4,5 @@ export interface IdToken {
   email: string;
   firstName: string;
   lastName: string;
-  roles?: string[];
+  role?: string[];
 }
