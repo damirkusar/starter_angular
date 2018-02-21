@@ -19,25 +19,27 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
   ? [storeFreeze]
   : [];
 
-import { AppRoutingModule } from './app-routing.module';
+import { routes } from './app-routing';
 import { AppComponent } from './_containers';
 import { reducers, effects, CustomSerializer } from './_store';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
+  bootstrap: [AppComponent],
   declarations: [AppComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
-    AppRoutingModule,
     HttpClientModule,
+    RouterModule.forRoot(routes),
     StoreModule.forRoot(reducers, { metaReducers }),
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
-    environment.production ? [] : StoreDevtoolsModule.instrument()
+    environment.production ? [] : StoreDevtoolsModule.instrument(),
+    AuthModule
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }],
-  bootstrap: [AppComponent]
+  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }]
 })
 export class AppModule {
   constructor() {

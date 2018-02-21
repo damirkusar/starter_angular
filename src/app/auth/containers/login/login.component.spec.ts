@@ -2,6 +2,8 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { LoginComponent } from './login.component';
 import { AuthService } from '../../services';
+import { StoreModule, combineReducers } from '@ngrx/store';
+import * as fromAuth from '../../store/reducers';
 
 class AuthServiceMock {}
 
@@ -13,6 +15,11 @@ describe('LoginComponent', () => {
     async(() => {
       TestBed.configureTestingModule({
         declarations: [LoginComponent],
+        imports: [
+          StoreModule.forRoot({
+            auth: combineReducers(fromAuth.reducers)
+          })
+        ],
         providers: [{ provide: AuthService, useClass: AuthServiceMock }]
       }).compileComponents();
     })
