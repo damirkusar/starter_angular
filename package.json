@@ -6,15 +6,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
-    "test": "npm run jest",
-    "test:watch": "npm run jest:watch",
-    "test:ci": "npm run jest:ci",
-    "karma": "npm run karma:watch",
-    "karma:watch": "ng test",
-    "karma:ci": "ng test --single-run",
-    "jest": "jest",
-    "jest:watch": "jest --watch",
-    "jest:ci": "jest --runInBand",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "test:ci": "jest --runInBand",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -44,22 +38,13 @@
     "@angular/cli": "1.7.0",
     "@angular/compiler-cli": "^5.2.5",
     "@angular/language-service": "^5.2.5",
-    "@types/jasmine": "~2.8.6",
-    "@types/jasminewd2": "~2.0.3",
     "@types/jest": "^22.1.3",
     "@types/node": "~9.4.6",
     "codelyzer": "^4.1.0",
-    "jasmine-core": "~2.99.1",
-    "jasmine-spec-reporter": "~4.2.1",
     "jest": "^22.3.0",
     "jest-cli": "^22.3.0",
-    "jest-preset-angular": "^5.0.0",    
+    "jest-preset-angular": "^5.0.0",
     "jest-html-reporter": "^1.2.0",
-    "karma": "~2.0.0",
-    "karma-chrome-launcher": "~2.2.0",
-    "karma-coverage-istanbul-reporter": "^1.4.1",
-    "karma-jasmine": "~1.1.1",
-    "karma-jasmine-html-reporter": "^0.2.2",
     "ngrx-store-freeze": "^0.2.1",
     "protractor": "~5.3.0",
     "ts-node": "~4.1.0",
@@ -74,25 +59,15 @@
       "__TS_CONFIG__": "src/tsconfig.spec.json",
       "__TRANSFORM_HTML__": true
     },
-    "coveragePathIgnorePatterns": [
-      "/node_modules/",
-      "<rootDir>/src/jest*.ts"
-    ],
+    "coveragePathIgnorePatterns": ["/node_modules/", "<rootDir>/src/jest*.ts"],
     "transform": {
-      "^.+\\.(ts|js|html)$": "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
+      "^.+\\.(ts|js|html)$":
+        "<rootDir>/node_modules/jest-preset-angular/preprocessor.js"
     },
     "testRegex": "(/__tests__/.*|\\.(test|spec))\\.(ts|js)$",
-    "moduleFileExtensions": [
-      "ts",
-      "js",
-      "html"
-    ],
+    "moduleFileExtensions": ["ts", "js", "html"],
     "moduleNameMapper": {},
-    "transformIgnorePatterns": [
-      "node_modules/(?!@ngrx)"
-    ],
-    "modulePathIgnorePatterns": [
-      "main.spec.ts"
-    ]
+    "transformIgnorePatterns": ["node_modules/(?!@ngrx)"],
+    "modulePathIgnorePatterns": ["main.spec.ts"]
   }
 }

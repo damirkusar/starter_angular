@@ -38,7 +38,7 @@ export class AuthService {
       firstName: parsedIdToken.firstName,
       lastName: parsedIdToken.lastName,
       email: parsedIdToken.email,
-      roles: parsedIdToken.roles
+      roles: parsedIdToken.role
     };
     return user;
   }
