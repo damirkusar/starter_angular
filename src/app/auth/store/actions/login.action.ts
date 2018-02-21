@@ -8,6 +8,7 @@ export const LOGIN_SUCCESS = '[Auth] Login Success';
 
 export class Login implements Action {
   readonly type = LOGIN;
+  constructor(public payload: { username: string; password: string }) {}
 }
 
 export class LoginFail implements Action {
