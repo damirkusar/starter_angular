@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../../services/auth.service';
+import { Store, select } from '@ngrx/store';
 import { Token, User } from '../../models';
+import { AuthService } from '../../services';
+
+import * as fromAuth from '../../store/reducers';
+import * as Auth from '../../store/actions';
 
 @Component({
   selector: 'app-login',
@@ -8,14 +12,11 @@ import { Token, User } from '../../models';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  constructor(private authService: AuthService) {}
+  constructor(private store: Store<fromAuth.State>) {}
 
   ngOnInit() {}
 
-  login(userName: string, password: string) {
-    this.authService.login(userName, password).subscribe((token: Token) => {
-      console.log('token', token);
-      console.log('user', this.authService.parseIdTokenToUser(token.id_token));
-    });
+  login(username: string, password: string) {
+    this.store.dispatch(new Auth.Login({ username, password }));
   }
 }

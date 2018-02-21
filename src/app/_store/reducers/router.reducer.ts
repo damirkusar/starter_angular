@@ -4,8 +4,11 @@ import {
   Params
 } from '@angular/router';
 import { createFeatureSelector, ActionReducerMap } from '@ngrx/store';
-
-import * as fromRouter from '@ngrx/router-store';
+import {
+  RouterReducerState,
+  routerReducer,
+  RouterStateSerializer
+} from '@ngrx/router-store';
 
 export interface RouterState {
   url: string;
@@ -14,19 +17,18 @@ export interface RouterState {
 }
 
 export interface State {
-  routerReducer: fromRouter.RouterReducerState<RouterState>;
+  routerReducer: RouterReducerState<RouterState>;
 }
 
 export const reducers: ActionReducerMap<State> = {
-  routerReducer: fromRouter.routerReducer
+  routerReducer: routerReducer
 };
 
-export const getRouterState = createFeatureSelector<
-  fromRouter.RouterReducerState<RouterState>
+export const selectRouterState = createFeatureSelector<
+  RouterReducerState<RouterState>
 >('routerReducer');
 
-export class CustomSerializer
-  implements fromRouter.RouterStateSerializer<RouterState> {
+export class CustomSerializer implements RouterStateSerializer<RouterState> {
   serialize(routerState: RouterStateSnapshot): RouterState {
     const { url } = routerState;
     const { queryParams } = routerState.root;

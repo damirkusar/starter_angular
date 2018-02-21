@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import * as JwtDecoder from 'jwt-decode';
-import { Token, User, IdToken } from '../models';
+import { Token, User, IdToken, Authenticate } from '../models';
 
 const authApi = '/api/auth/';
 
@@ -10,10 +10,12 @@ const authApi = '/api/auth/';
 export class AuthService {
   constructor(private http: HttpClient) {}
 
-  public login(userName: string, password: string): Observable<Token> {
+  public login(authenticate: Authenticate): Observable<Token> {
     const grant_type = 'password';
     const scope = 'openid profile roles';
-    const params = `grant_type=${grant_type}&scope=${scope}&username=${userName}&password=${password}`;
+    const params = `grant_type=${grant_type}&scope=${scope}&username=${
+      authenticate.username
+    }&password=${authenticate.password}`;
 
     const headers = new HttpHeaders().set(
       'Content-Type',
@@ -25,8 +27,8 @@ export class AuthService {
     });
   }
 
-  public parseIdTokenToUser(token: string): User {
-    const parsedIdToken: IdToken = JwtDecoder(token);
+  public parseIdTokenToUser(token: Token): User {
+    const parsedIdToken: IdToken = JwtDecoder(token.id_token);
     const user: User = {
       userId: parsedIdToken.sub,
       username: parsedIdToken.username,
