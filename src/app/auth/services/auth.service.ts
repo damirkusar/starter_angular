@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import * as JwtDecoder from 'jwt-decode';
 import { Token, User, IdToken, Authenticate } from '../models';
 
-const authApi = 'https://portal.axpo.com/api/auth';
+const authApi = '/api/auth';
 
 @Injectable()
 export class AuthService {

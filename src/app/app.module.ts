@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { Routes, RouterModule } from '@angular/router';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+
 import {
   StoreRouterConnectingModule,
   RouterStateSerializer
@@ -21,8 +22,9 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 
 import { routes } from './app-routing';
 import { AppComponent } from './_containers';
+import { AuthInterceptor } from './_interceptors';
 import { reducers, effects, CustomSerializer } from './_store';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
 
 @NgModule({
@@ -39,7 +41,13 @@ import { AuthModule } from './auth/auth.module';
     environment.production ? [] : StoreDevtoolsModule.instrument(),
     AuthModule
   ],
-  providers: [{ provide: RouterStateSerializer, useClass: CustomSerializer }]
+  providers: [
+    {
+      provide: RouterStateSerializer,
+      useClass: CustomSerializer
+    },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
+  ]
 })
 export class AppModule {
   constructor() {

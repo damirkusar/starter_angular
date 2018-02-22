@@ -2,6 +2,6 @@
   login works!
 </p>
 
-<input type="text" [value]="'damir@kusar.ch'" #userName/>
-<input type="password" [value]="'Password1$'" #password/>
+<input type="text" #userName/>
+<input type="password" #password/>
 <button (click)="login(userName.value, password.value)">Login</button>
