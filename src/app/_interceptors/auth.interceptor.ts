@@ -12,7 +12,7 @@ import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/Observable/of';
 import 'rxjs/add/Observable/of';
 import { tap, mergeMap, switchMap } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 
 import * as fromAuth from '../auth/store/reducers';
 import { Token } from '../auth/models';
@@ -23,7 +23,7 @@ export class AuthInterceptor implements HttpInterceptor {
   token: Token;
   constructor(private store: Store<fromAuth.State>) {
     this.store
-      .select(fromAuth.getToken)
+      .pipe(select(fromAuth.getToken))
       .subscribe((token: Token) => (this.token = token));
   }
 
@@ -31,9 +31,7 @@ export class AuthInterceptor implements HttpInterceptor {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    console.log('Hello Auth Interceptor');
     let request;
-    console.log('token', this.token);
     if (this.token) {
       request = req.clone({
         setHeaders: {
@@ -43,7 +41,6 @@ export class AuthInterceptor implements HttpInterceptor {
     } else {
       request = req.clone();
     }
-    console.log('request', request);
     return next.handle(request);
   }
 }

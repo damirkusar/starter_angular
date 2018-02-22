@@ -2,7 +2,7 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
 import { Observable } from 'rxjs/Observable';
 import { filter } from 'rxjs/operators';
-import { Store } from '@ngrx/store';
+import { Store, select } from '@ngrx/store';
 import { User } from '../auth/models';
 import * as fromAuth from '../auth/store/reducers';
 
@@ -19,7 +19,7 @@ export class AppComponent implements OnInit {
   constructor(private store: Store<fromAuth.State>, public router: Router) {}
 
   ngOnInit(): void {
-    this.user$ = this.store.select(fromAuth.getUser);
+    this.user$ = this.store.pipe(select(fromAuth.getUser));
 
     this.router.events
       .pipe(filter(e => e instanceof NavigationStart))
