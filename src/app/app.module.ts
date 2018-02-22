@@ -22,7 +22,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
 
 import { routes } from './app-routing';
 import { AppComponent } from './_containers';
-import { AuthInterceptor, EnvironmentInterceptor } from './_interceptors';
+import { interceptors } from './_interceptors';
 import { reducers, effects, CustomSerializer } from './_store';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
@@ -46,12 +46,7 @@ import { AuthModule } from './auth/auth.module';
       provide: RouterStateSerializer,
       useClass: CustomSerializer
     },
-    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: EnvironmentInterceptor,
-      multi: true
-    }
+    ...interceptors
   ]
 })
 export class AppModule {
