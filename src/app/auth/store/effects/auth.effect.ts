@@ -22,7 +22,8 @@ export class AuthEffects {
   ) {}
 
   @Effect()
-  login$ = this.actions$.ofType(AuthActionTypes.Login).pipe(
+  login$ = this.actions$.pipe(
+    ofType(AuthActionTypes.Login),
     map((action: Login) => action.payload),
     exhaustMap((authenticate: Authenticate) =>
       this.authService.login(authenticate).pipe(
