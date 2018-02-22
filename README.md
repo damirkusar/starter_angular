@@ -31,6 +31,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * Translation
 * State management
   -- Store current user and token in localstore?
-* Interceptor
-  -- Environment
 * UI Framework
