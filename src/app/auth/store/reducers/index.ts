@@ -19,7 +19,7 @@ export const reducers: ActionReducerMap<AuthState> = {
   status: fromAuth.reducer
 };
 
-export const selectAuthState = createFeatureSelector<AuthState>('auth');
+export const selectAuthState = createFeatureSelector<AuthState>('authReducer');
 
 export const selectAuthStatusState = createSelector(
   selectAuthState,

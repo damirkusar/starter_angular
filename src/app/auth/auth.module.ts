@@ -5,7 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { routes } from './auth-routing';
 import { containers } from './containers';
-import { services, AuthService } from './services';
+import { services } from './services';
 
 import { reducers, effects } from './store';
 import { RouterModule } from '@angular/router';
@@ -14,10 +14,10 @@ import { RouterModule } from '@angular/router';
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    StoreModule.forFeature('auth', reducers),
+    StoreModule.forFeature('authReducer', reducers),
     EffectsModule.forFeature(effects)
   ],
   declarations: [...containers],
-  providers: [...services, AuthService]
+  providers: [...services]
 })
 export class AuthModule {}

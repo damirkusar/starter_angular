@@ -4740,6 +4740,10 @@ ngrx-store-freeze@^0.2.1:
   dependencies:
     deep-freeze-strict "^1.1.1"
 
+ngrx-store-localstorage@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ngrx-store-localstorage/-/ngrx-store-localstorage-5.0.0.tgz#adc5b8373fee995f6bb2c508a0e510fc2047a74e"
+
 no-case@^2.2.0:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/no-case/-/no-case-2.3.2.tgz#60b813396be39b3f1288a4c1ed5d1e7d28b464ac"

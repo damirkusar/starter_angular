@@ -7,25 +7,34 @@ import {
   StoreRouterConnectingModule,
   RouterStateSerializer
 } from '@ngrx/router-store';
-import { StoreModule, MetaReducer } from '@ngrx/store';
+import { StoreModule, MetaReducer, ActionReducer } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 
 // not used in production
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { storeFreeze } from 'ngrx-store-freeze';
+import { localStorageSync } from 'ngrx-store-localstorage';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 import { environment } from '../environments/environment';
-
-export const metaReducers: MetaReducer<any>[] = !environment.production
-  ? [storeFreeze]
-  : [];
-
-import { routes } from './app-routing';
 import { AppComponent } from './_containers';
+import { routes } from './app-routing';
 import { interceptors } from './_interceptors';
 import { reducers, effects, CustomSerializer } from './_store';
-import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthModule } from './auth/auth.module';
+
+export function localStorageSyncReducer(
+  reducer: ActionReducer<any>
+): ActionReducer<any> {
+  return localStorageSync({
+    keys: ['authReducer'],
+    rehydrate: true
+  })(reducer);
+}
+
+export const metaReducers: MetaReducer<any>[] = !environment.production
+  ? [storeFreeze, localStorageSyncReducer]
+  : [localStorageSyncReducer];
 
 @NgModule({
   bootstrap: [AppComponent],
