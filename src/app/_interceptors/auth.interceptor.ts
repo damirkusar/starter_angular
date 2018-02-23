@@ -14,7 +14,7 @@ import 'rxjs/add/Observable/of';
 import { tap, mergeMap, switchMap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 
-import * as fromAuth from '../auth/store/reducers';
+import * as fromAuth from '../auth/store';
 import { Token } from '../auth/models';
 import { AuthService } from '../auth/services';
 

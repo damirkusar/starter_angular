@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import { filter } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { User } from '../auth/models';
-import * as fromAuth from '../auth/store/reducers';
+import * as fromAuth from '../auth/store';
 
 @Component({
   selector: 'app-root',
