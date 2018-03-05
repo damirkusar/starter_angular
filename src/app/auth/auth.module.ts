@@ -20,4 +20,4 @@ import { RouterModule } from '@angular/router';
   declarations: [...containers],
   providers: [...services]
 })
-export class AuthModule {}
+export class AuthModule { }

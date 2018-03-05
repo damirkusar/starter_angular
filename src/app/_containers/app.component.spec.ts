@@ -16,7 +16,7 @@ describe('AppComponent', () => {
         imports: [
           RouterTestingModule,
           StoreModule.forRoot({
-            auth: combineReducers(fromAuth.reducers)
+            authReducer: combineReducers(fromAuth.reducers)
           })
         ]
       }).compileComponents();
@@ -31,25 +31,22 @@ describe('AppComponent', () => {
   });
 
   it(
-    'should create the app',
-    async(() => {
+    'should create the app', () => {
       expect(component).toBeTruthy();
-    })
+    }
   );
 
   it(
-    `should have as title 'Angular Starter'`,
-    async(() => {
+    `should have as title 'Angular Starter'`, () => {
       expect(component.title).toEqual('Angular Starter');
-    })
+    }
   );
 
   it(
-    'should render title in a h1 tag',
-    async(() => {
+    'should render title in a h1 tag', () => {
       expect(element.querySelector('h1').textContent).toContain(
         'Welcome to Angular Starter!'
       );
-    })
+    }
   );
 });
