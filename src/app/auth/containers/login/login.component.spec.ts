@@ -5,7 +5,7 @@ import { AuthService } from '../../services';
 import { StoreModule, combineReducers } from '@ngrx/store';
 import * as fromAuth from '../../store/reducers';
 
-class AuthServiceMock {}
+class AuthServiceMock { }
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -31,7 +31,7 @@ describe('LoginComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
+  it('should be create', () => {
     expect(component).toBeTruthy();
   });
 });

@@ -31,7 +31,7 @@ describe('AppComponent', () => {
   });
 
   it(
-    'should create the app', () => {
+    'should be created', () => {
       expect(component).toBeTruthy();
     }
   );
