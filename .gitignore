@@ -42,3 +42,4 @@ testem.log
 .DS_Store
 Thumbs.db
 **/test-reports/**/*.html
+test-reports/jest.html
