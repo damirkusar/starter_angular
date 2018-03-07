@@ -47,6 +47,16 @@ describe('Auth Actions', () => {
         });
       });
     });
+
+    describe('LoginRedirect', () => {
+      it('should create an action', () => {
+        const action = new fromAuth.LoginRedirect();
+
+        expect({ ...action }).toEqual({
+          type: fromAuth.AuthActionTypes.LoginRedirect
+        });
+      });
+    });
   });
 
   describe('Logout Actions', () => {
