@@ -5,19 +5,19 @@ import * as fromAuth from '../reducers/auth.reducer';
 
 export const selectAuthState = createFeatureSelector<AuthState>('authReducer');
 
-export const selectAuthStatusState = createSelector(
+export const getAuthStatusState = createSelector(
   selectAuthState,
   (state: AuthState) => state.status
 );
 
 export const getLoggedIn = createSelector(
-  selectAuthStatusState,
+  getAuthStatusState,
   fromAuth.getLoggedIn
 );
 
-export const getUser = createSelector(selectAuthStatusState, fromAuth.getUser);
+export const getUser = createSelector(getAuthStatusState, fromAuth.getUser);
 
 export const getToken = createSelector(
-  selectAuthStatusState,
+  getAuthStatusState,
   fromAuth.getToken
 );
