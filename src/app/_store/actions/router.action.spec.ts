@@ -4,7 +4,7 @@ describe('Router Actions', () => {
 
   describe('Go Action', () => {
     describe('Go', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const payload = { path: ['test'] };
         const action = new fromRouter.Go(payload);
 
@@ -18,7 +18,7 @@ describe('Router Actions', () => {
 
   describe('Back Action', () => {
     describe('Back', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const action = new fromRouter.Back();
 
         expect({ ...action }).toEqual({
@@ -30,7 +30,7 @@ describe('Router Actions', () => {
 
   describe('Forward Action', () => {
     describe('Forward', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const action = new fromRouter.Forward();
 
         expect({ ...action }).toEqual({

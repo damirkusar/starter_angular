@@ -10,7 +10,8 @@ import {
   LoginSuccess,
   LoginFailure,
   AuthActionTypes,
-  Logout
+  Logout,
+  LoginRedirect
 } from '../actions/auth.action';
 import { User, Authenticate, Token } from '../../models';
 @Injectable()
@@ -19,7 +20,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
-  ) {}
+  ) { }
 
   @Effect()
   login$ = this.actions$.pipe(
@@ -43,7 +44,7 @@ export class AuthEffects {
   );
 
   @Effect({ dispatch: false })
-  loginRedirect$ = this.actions$.pipe(
+  redirect$ = this.actions$.pipe(
     ofType(AuthActionTypes.LoginRedirect, AuthActionTypes.Logout),
     tap(authed => {
       this.router.navigate(['/auth/login']);

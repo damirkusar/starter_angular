@@ -30,19 +30,19 @@ describe('AppComponent', () => {
     fixture.detectChanges();
   });
 
-  it(
+  test(
     'should be created', () => {
       expect(component).toBeTruthy();
     }
   );
 
-  it(
+  test(
     `should have as title 'Angular Starter'`, () => {
       expect(component.title).toEqual('Angular Starter');
     }
   );
 
-  it(
+  test(
     'should render title in a h1 tag', () => {
       expect(element.querySelector('h1').textContent).toContain(
         'Welcome to Angular Starter!'

@@ -3,7 +3,7 @@ import * as fromAuthActions from '../actions/auth.action';
 
 describe('AuthReducer', () => {
   describe('undefined action', () => {
-    it('should return the default state', () => {
+    test('should return the default state', () => {
       const { initialState } = fromAuth;
       const action = {} as any;
       const state = fromAuth.reducer(undefined, action);
@@ -28,7 +28,7 @@ describe('AuthReducer', () => {
       };
     });
 
-    it('should set loggedIn to true', () => {
+    test('should set loggedIn to true', () => {
       const { initialState } = fromAuth;
       const action = new fromAuthActions.LoginSuccess(payload);
       const state = fromAuth.reducer(undefined, action);
@@ -36,7 +36,7 @@ describe('AuthReducer', () => {
       expect(state.loggedIn).toBe(true);
     });
 
-    it('should set user', () => {
+    test('should set user', () => {
       const { initialState } = fromAuth;
       const action = new fromAuthActions.LoginSuccess(payload);
       const state = fromAuth.reducer(undefined, action);
@@ -44,7 +44,7 @@ describe('AuthReducer', () => {
       expect(state.user).toBe(payload.user);
     });
 
-    it('should set token', () => {
+    test('should set token', () => {
       const { initialState } = fromAuth;
       const action = new fromAuthActions.LoginSuccess(payload);
       const state = fromAuth.reducer(undefined, action);
@@ -52,7 +52,7 @@ describe('AuthReducer', () => {
       expect(state.token).toBe(payload.token);
     });
 
-    it('should set state', () => {
+    test('should set state', () => {
       const { initialState } = fromAuth;
       const action = new fromAuthActions.LoginSuccess(payload);
       const state = fromAuth.reducer(undefined, action);

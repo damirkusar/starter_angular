@@ -4,7 +4,7 @@ describe('Auth Actions', () => {
 
   describe('Login Action', () => {
     describe('Login', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const payload = { username: 'test', password: 'password' };
         const action = new fromAuth.Login(payload);
 
@@ -16,7 +16,7 @@ describe('Auth Actions', () => {
     });
 
     describe('LoginSuccess', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const payload = {
           user: {
             userId: '123'
@@ -37,7 +37,7 @@ describe('Auth Actions', () => {
     });
 
     describe('LoginFailure', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const payload = { error: 'someError' };
         const action = new fromAuth.LoginFailure(payload);
 
@@ -49,7 +49,7 @@ describe('Auth Actions', () => {
     });
 
     describe('LoginRedirect', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const action = new fromAuth.LoginRedirect();
 
         expect({ ...action }).toEqual({
@@ -61,7 +61,7 @@ describe('Auth Actions', () => {
 
   describe('Logout Actions', () => {
     describe('Logout', () => {
-      it('should create an action', () => {
+      test('should create an action', () => {
         const action = new fromAuth.Logout();
 
         expect({ ...action }).toEqual({

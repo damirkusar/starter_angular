@@ -11,7 +11,7 @@ describe('AuthService', () => {
     });
   });
 
-  it(
+  test(
     'should be created',
     inject([AuthService], (service: AuthService) => {
       expect(service).toBeTruthy();
