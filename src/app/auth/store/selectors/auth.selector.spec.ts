@@ -9,7 +9,7 @@ import * as fromActions from '../actions/index';
 import * as fromSelectors from './auth.selector';
 import { Token, User } from '../../models';
 
-describe('Pizzas Selectors', () => {
+describe('Auth Selectors', () => {
   let store: Store<fromReducers.AuthState>;
 
   const token: Token = {
@@ -28,9 +28,9 @@ describe('Pizzas Selectors', () => {
       imports: [
         StoreModule.forRoot({
           ...fromRoot.reducers,
-          authReducer: combineReducers(fromReducers.reducers),
-        }),
-      ],
+          authReducer: combineReducers(fromReducers.reducers)
+        })
+      ]
     });
 
     store = TestBed.get(Store);
@@ -80,9 +80,7 @@ describe('Pizzas Selectors', () => {
     test('should return user', () => {
       let result;
 
-      store
-        .select(fromSelectors.getUser)
-        .subscribe(value => (result = value));
+      store.select(fromSelectors.getUser).subscribe(value => (result = value));
 
       expect(result).toEqual(null);
 
@@ -96,9 +94,7 @@ describe('Pizzas Selectors', () => {
     test('should return token', () => {
       let result;
 
-      store
-        .select(fromSelectors.getToken)
-        .subscribe(value => (result = value));
+      store.select(fromSelectors.getToken).subscribe(value => (result = value));
 
       expect(result).toEqual(null);
 
