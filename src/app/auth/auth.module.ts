@@ -9,15 +9,17 @@ import { services } from './services';
 
 import { reducers, effects } from './store';
 import { RouterModule } from '@angular/router';
+import { SharedModule } from '../shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
     StoreModule.forFeature('authReducer', reducers),
-    EffectsModule.forFeature(effects)
+    EffectsModule.forFeature(effects),
+    SharedModule
   ],
   declarations: [...containers],
   providers: [...services]
 })
-export class AuthModule { }
+export class AuthModule {}

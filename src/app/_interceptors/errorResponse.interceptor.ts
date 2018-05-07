@@ -9,7 +9,7 @@ import {
 } from '@angular/common/http';
 import { Router } from '@angular/router';
 
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
 const loggerInstanceName = 'ErrorResponseInterceptor';

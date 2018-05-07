@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+@import "tailwind.scss";
+.grid {
+  display: grid;
+}
+
+.grid-template-row-full {
+  grid-template-rows: 100vh;
+}
+
+.grid-gap-0 {
+  grid-gap: 0 px;
+}

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Effect, Actions, ofType } from '@ngrx/effects';
-import { of } from 'rxjs/observable/of';
+import { of, pipe } from 'rxjs';
 import { tap, map, exhaustMap, catchError, switchMap } from 'rxjs/operators';
 
 import { AuthService } from '../../services/auth.service';
@@ -20,7 +20,7 @@ export class AuthEffects {
     private actions$: Actions,
     private authService: AuthService,
     private router: Router
-  ) { }
+  ) {}
 
   @Effect()
   login$ = this.actions$.pipe(

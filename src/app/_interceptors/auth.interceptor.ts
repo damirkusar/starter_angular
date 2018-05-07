@@ -8,9 +8,8 @@ import {
   HttpHeaders
 } from '@angular/common/http';
 
-import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/Observable/of';
-import 'rxjs/add/Observable/of';
+import { Observable, of } from 'rxjs';
+// import 'rxjs/add/Observable/of';
 import { tap, mergeMap, switchMap } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 

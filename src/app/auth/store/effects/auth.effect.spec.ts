@@ -5,10 +5,8 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { Actions } from '@ngrx/effects';
 
 import { marbles } from 'rxjs-marbles';
-import { Observable } from 'rxjs/Observable';
-import { empty } from 'rxjs/observable/empty';
-import { map } from 'rxjs/operators/map';
-// import { of } from 'rxjs/observable/of';
+import { Observable, empty } from 'rxjs';
+import { map } from 'rxjs/operators';
 import 'rxjs/add/observable/of';
 
 import { AuthService } from '../../services/auth.service';
@@ -16,8 +14,8 @@ import * as fromAuthEffects from './auth.effect';
 import * as fromAuthActions from '../actions/auth.action';
 import { Token, User } from '../../models';
 
-
 export class TestActions extends Actions {
+  source: Observable<any>;
   constructor() {
     super(empty());
   }
@@ -53,8 +51,8 @@ describe('AuthEffects', () => {
       providers: [
         AuthService,
         fromAuthEffects.AuthEffects,
-        { provide: Actions, useFactory: getActions },
-      ],
+        { provide: Actions, useFactory: getActions }
+      ]
     });
 
     actions$ = TestBed.get(Actions);
@@ -66,27 +64,33 @@ describe('AuthEffects', () => {
   });
 
   describe('login', () => {
-    test('should return a user and token after Login', marbles((m) => {
-      const action = new fromAuthActions.Login({
-        username: 'Hello',
-        password: 'World'
-      });
-      const completion = new fromAuthActions.LoginSuccess({ user, token });
+    test(
+      'should return a user and token after Login',
+      marbles(m => {
+        const action = new fromAuthActions.Login({
+          username: 'Hello',
+          password: 'World'
+        });
+        const completion = new fromAuthActions.LoginSuccess({ user, token });
 
-      actions$.stream = m.hot('-a', { a: action });
-      const expected = m.cold('-b', { b: completion });
+        actions$.stream = m.hot('-a', { a: action });
+        const expected = m.cold('-b', { b: completion });
 
-      m.expect(effects.login$).toBeObservable(expected);
-    }));
+        m.expect(effects.login$).toBeObservable(expected);
+      })
+    );
 
-    test('should return a user and token after LoginSuccess', marbles((m) => {
-      const action = new fromAuthActions.LoginSuccess({ user, token });
-      const completion = new fromAuthActions.LoginSuccess({ user, token });
+    test(
+      'should return a user and token after LoginSuccess',
+      marbles(m => {
+        const action = new fromAuthActions.LoginSuccess({ user, token });
+        const completion = new fromAuthActions.LoginSuccess({ user, token });
 
-      actions$.stream = m.hot('-a', { a: action });
-      const expected = m.cold('-b', { b: completion });
+        actions$.stream = m.hot('-a', { a: action });
+        const expected = m.cold('-b', { b: completion });
 
-      m.expect(effects.loginSuccess$).toBeObservable(expected);
-    }));
+        m.expect(effects.loginSuccess$).toBeObservable(expected);
+      })
+    );
   });
 });

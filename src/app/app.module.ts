@@ -22,6 +22,7 @@ import { routes } from './app-routing';
 import { interceptors } from './_interceptors';
 import { reducers, effects, CustomSerializer } from './_store';
 import { AuthModule } from './auth/auth.module';
+import { SharedModule } from './shared/shared.module';
 
 export function localStorageSyncReducer(
   reducer: ActionReducer<any>
@@ -48,6 +49,7 @@ export const metaReducers: MetaReducer<any>[] = !environment.production
     EffectsModule.forRoot(effects),
     StoreRouterConnectingModule,
     environment.production ? [] : StoreDevtoolsModule.instrument(),
+    SharedModule,
     AuthModule
   ],
   providers: [

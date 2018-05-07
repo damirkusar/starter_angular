@@ -1,6 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Router, NavigationEnd, NavigationStart } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { Store, select } from '@ngrx/store';
 import { User } from '../auth/models';

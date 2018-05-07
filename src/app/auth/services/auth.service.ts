@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as JwtDecoder from 'jwt-decode';
 import { Token, User, IdToken, Authenticate } from '../models';
 
@@ -8,14 +8,14 @@ const authApi = '/auth';
 
 @Injectable()
 export class AuthService {
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   public login(authenticate: Authenticate): Observable<Token> {
     const grant_type = 'password';
     const scope = 'openid profile roles';
     const params = `grant_type=${grant_type}&scope=${scope}&username=${
       authenticate.username
-      }&password=${authenticate.password}`;
+    }&password=${authenticate.password}`;
 
     const headers = new HttpHeaders().set(
       'Content-Type',
