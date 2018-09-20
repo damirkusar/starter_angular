@@ -11,5 +11,9 @@
     },
     "**/node_modules/": true,
     "**/dist/": true
-  }
+  },
+  "cucumberautocomplete.syncfeatures": "e2e/features/**/*feature",
+  "cucumberautocomplete.strictGherkinCompletion": true,
+  "cucumberautocomplete.smartSnippets": true,
+  "cucumberautocomplete.stepsInvariants": true,
 }

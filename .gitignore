@@ -43,3 +43,4 @@ testem.log
 Thumbs.db
 **/test-reports/**/*.html
 test-reports/jest.html
+reports/summary.json

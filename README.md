@@ -1,6 +1,6 @@
 # Angularstarter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.6.8.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.2.3.
 
 ## Development server
 
@@ -20,7 +20,7 @@ Run `yarn test` to execute the unit tests via [Jest](https://facebook.github.io/
 
 ## Running end-to-end tests
 
-Run `yarn e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+Run `yarn e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/) and [Cucumber](https://cucumber.io/).
 
 ## Further help
 

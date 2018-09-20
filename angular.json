@@ -26,6 +26,36 @@
             "scripts": []
           },
           "configurations": {
+            "local": {
+              "optimization": false,
+              "outputHashing": "all",
+              "sourceMap": true,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": false,
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.local.ts"
+              }]
+            },
+            "e2e": {
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.local.ts"
+              }]
+            },
             "production": {
               "optimization": true,
               "outputHashing": "all",
@@ -36,12 +66,10 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ]
+              "fileReplacements": [{
+                "replace": "src/environments/environment.ts",
+                "with": "src/environments/environment.prod.ts"
+              }]
             }
           }
         },
@@ -51,6 +79,12 @@
             "browserTarget": "angularstarter:build"
           },
           "configurations": {
+            "local": {
+              "browserTarget": "angularstarter:build:local"
+            },
+            "e2e": {
+              "browserTarget": "angularstarter:build:e2e"
+            },
             "production": {
               "browserTarget": "angularstarter:build:production"
             }
